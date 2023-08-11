@@ -1,9 +1,11 @@
-package ejemplo;
+package v03;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 
 import org.junit.Test;
+
+import v03.Celda;
 
 public class CeldaTest {
 

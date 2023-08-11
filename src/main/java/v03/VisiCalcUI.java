@@ -1,4 +1,4 @@
-package ejemplo;
+package v03;
 
 import java.util.Scanner;
 

@@ -1,7 +1,11 @@
-package ejemplo;
+package v03;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import v03.HojaDeCalculo;
+import v03.Navegador;
+
 import static org.junit.Assert.*;
 
 public class NavegadorTest {
