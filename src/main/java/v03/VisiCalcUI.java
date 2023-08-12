@@ -30,8 +30,8 @@ public class VisiCalcUI {
 
     private void mostrarHoja() {
         System.out.print("      ");
-        for (int j = 0; j < hoja.getNumeroDeColumnas(); j++) {
-            char letraColumna = (char) ('A' + j);
+        for (int j = 0; j < viewport.getColumnasViewport(); j++) {
+            char letraColumna = (char) ('A' + viewport.getColumnaInicio() + j);
             System.out.printf("%-8s", letraColumna);
         }
         System.out.println();
