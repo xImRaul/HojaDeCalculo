@@ -5,8 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import v03.HojaDeCalculo;
-
 public class HojaDeCalculoTest {
 
     private HojaDeCalculo hoja;

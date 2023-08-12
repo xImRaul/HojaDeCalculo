@@ -5,10 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import v03.HojaDeCalculo;
-import v03.Navegador;
-import v03.VisiCalcUI;
-
 public class VisiCalcUITest {
 
     private VisiCalcUI ui;

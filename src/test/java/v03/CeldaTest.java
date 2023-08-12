@@ -5,8 +5,6 @@ import org.junit.Before;
 
 import org.junit.Test;
 
-import v03.Celda;
-
 public class CeldaTest {
 
     private Celda celda;
