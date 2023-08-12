@@ -2,8 +2,8 @@ package v03;
 
 public class VisiCalc {
 
-    private static final int FILAS = 15;
-    private static final int COLUMNAS = 10;
+    private static final int FILAS = 30;
+    private static final int COLUMNAS = 20;
 
     public static void main(String[] args) {
 
