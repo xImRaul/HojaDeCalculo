@@ -1,0 +1,112 @@
+@startuml
+
+class VisiCalc {
+    +static main(args: String[]): void
+}
+
+class VisiCalcUI {
+    -hoja: HojaDeCalculo
+    -viewport: Viewport
+    -scanner: Scanner
+    +iniciar(): void
+    -mostrarHoja(): void
+    -mostrarOpciones(): void
+    -procesarComando(comando: char): boolean
+    -editarCeldaActual(): void
+}
+
+class Viewport {
+    -hoja: HojaDeCalculo
+    -filasViewport: int
+    -columnasViewport: int
+    -filaInicio: int
+    -columnaInicio: int
+    -filaCursor: int
+    -columnaCursor: int
+    +moverCursor(dxFila: int, dxColumna: int): void
+    +getCeldaCursor(): Celda
+    +getFilasViewport(): int
+    +getColumnasViewport(): int
+    +getFilaInicio(): int
+    +getCelda(fila: int, columna: int): Celda
+}
+
+class HojaDeCalculo {
+    -filas: int
+    -columnas: int
+    -celdas: Celda[][]
+    +getCelda(fila: int, columna: int): Celda
+    +getNumeroDeFilas(): int
+    +getNumeroDeColumnas(): int
+}
+
+class Celda {
+    -contenido: String
+    +setContenido(contenido: String): void
+    +getContenido(): String
+}
+
+VisiCalc --> VisiCalcUI: Instancia
+VisiCalcUI --> Viewport: Usa
+VisiCalcUI --> HojaDeCalculo: Usa
+Viewport --> HojaDeCalculo: Usa
+Viewport --> Celda: Usa
+HojaDeCalculo --> Celda: Tiene
+
+@enduml
+@startuml
+
+class VisiCalc {
+    +static main(args: String[]): void
+}
+
+class VisiCalcUI {
+    -hoja: HojaDeCalculo
+    -viewport: Viewport
+    -scanner: Scanner
+    +iniciar(): void
+    -mostrarHoja(): void
+    -mostrarOpciones(): void
+    -procesarComando(comando: char): boolean
+    -editarCeldaActual(): void
+}
+
+class Viewport {
+    -hoja: HojaDeCalculo
+    -filasViewport: int
+    -columnasViewport: int
+    -filaInicio: int
+    -columnaInicio: int
+    -filaCursor: int
+    -columnaCursor: int
+    +moverCursor(dxFila: int, dxColumna: int): void
+    +getCeldaCursor(): Celda
+    +getFilasViewport(): int
+    +getColumnasViewport(): int
+    +getFilaInicio(): int
+    +getCelda(fila: int, columna: int): Celda
+}
+
+class HojaDeCalculo {
+    -filas: int
+    -columnas: int
+    -celdas: Celda[][]
+    +getCelda(fila: int, columna: int): Celda
+    +getNumeroDeFilas(): int
+    +getNumeroDeColumnas(): int
+}
+
+class Celda {
+    -contenido: String
+    +setContenido(contenido: String): void
+    +getContenido(): String
+}
+
+VisiCalc --> VisiCalcUI: Instancia
+VisiCalcUI --> Viewport: Usa
+VisiCalcUI --> HojaDeCalculo: Usa
+Viewport --> HojaDeCalculo: Usa
+Viewport --> Celda: Usa
+HojaDeCalculo --> Celda: Tiene
+
+@enduml
