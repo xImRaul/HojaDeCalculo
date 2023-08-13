@@ -1,4 +1,4 @@
-package v03;
+package v04;
 
 public class Viewport {
     private HojaDeCalculo hoja;
@@ -63,7 +63,6 @@ public class Viewport {
     public Celda getCeldaCursor() {
         return hoja.getCelda(filaInicio + filaCursor, columnaInicio + columnaCursor);
     }
-
 
     public int getFilaInicio() {
         return filaInicio;

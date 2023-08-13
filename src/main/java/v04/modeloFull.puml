@@ -5,7 +5,6 @@ class VisiCalc {
 }
 
 class VisiCalcUI {
-    -hoja: HojaDeCalculo
     -viewport: Viewport
     -scanner: Scanner
     +iniciar(): void
@@ -17,24 +16,31 @@ class VisiCalcUI {
 
 class Viewport {
     -hoja: HojaDeCalculo
-    -filasViewport: int
-    -columnasViewport: int
     -filaInicio: int
     -columnaInicio: int
+    -FILAS_VIEWPORT: int
+    -COLUMNAS_VIEWPORT: int
     -filaCursor: int
     -columnaCursor: int
-    +moverCursor(dxFila: int, dxColumna: int): void
+
+    +getCelda(fila: int, columna: int): Celda
+    +desplazarVerticalmente(cantidad: int): void
+    +desplazarHorizontalmente(cantidad: int): void
+    +moverCursor(desplazamientoFila: int,desplazamientoColumna: int)
     +getCeldaCursor(): Celda
+    +getFilaInicio(): int
+    +getColumnaInicio(): int
     +getFilasViewport(): int
     +getColumnasViewport(): int
-    +getFilaInicio(): int
-    +getCelda(fila: int, columna: int): Celda
+    +getFilaCursorGlobal(): int
+    +getColumnaCursorGlobal(): int
 }
 
 class HojaDeCalculo {
-    -filas: int
-    -columnas: int
     -celdas: Celda[][]
+    -FILAS: int
+    -COLUMNAS: int
+    
     +getCelda(fila: int, columna: int): Celda
     +getNumeroDeFilas(): int
     +getNumeroDeColumnas(): int
@@ -42,8 +48,9 @@ class HojaDeCalculo {
 
 class Celda {
     -contenido: String
-    +setContenido(contenido: String): void
     +getContenido(): String
+    +setContenido(contenido: String): void
+    
 }
 
 VisiCalc --> VisiCalcUI: Instancia

@@ -1,14 +1,12 @@
-package v03;
+package v04;
 
 import java.util.Scanner;
 
 public class VisiCalcUI {
-    private HojaDeCalculo hoja;
     private Viewport viewport;
     private Scanner scanner;
 
     public VisiCalcUI(HojaDeCalculo hoja) {
-        this.hoja = hoja;
         this.viewport = new Viewport(hoja, 15, 10);
         this.scanner = new Scanner(System.in);
     }
