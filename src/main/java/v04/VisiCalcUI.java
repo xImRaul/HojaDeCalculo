@@ -1,15 +1,13 @@
-package v03;
+package v04;
 
 import java.util.Scanner;
 
 public class VisiCalcUI {
-    private HojaDeCalculo hoja;
-    private Navegador navegador;
+    private Viewport viewport;
     private Scanner scanner;
 
     public VisiCalcUI(HojaDeCalculo hoja) {
-        this.hoja = hoja;
-        this.navegador = new Navegador(hoja);
+        this.viewport = new Viewport(hoja, 15, 10);
         this.scanner = new Scanner(System.in);
     }
 
@@ -30,17 +28,17 @@ public class VisiCalcUI {
 
     private void mostrarHoja() {
         System.out.print("      ");
-        for (int j = 0; j < hoja.getNumeroDeColumnas(); j++) {
-            char letraColumna = (char) ('A' + j);
+        for (int j = 0; j < viewport.getColumnasViewport(); j++) {
+            char letraColumna = (char) ('A' + viewport.getColumnaInicio() + j);
             System.out.printf("%-8s", letraColumna);
         }
         System.out.println();
 
-        for (int i = 0; i < hoja.getNumeroDeFilas(); i++) {
-            System.out.printf("%-5d|", i + 1);
+        for (int i = 0; i < viewport.getFilasViewport(); i++) {
+            System.out.printf("%-5d|", viewport.getFilaInicio() + i + 1);
 
-            for (int j = 0; j < hoja.getNumeroDeColumnas(); j++) {
-                String contenidoCelda = hoja.getCelda(i, j).getContenido();
+            for (int j = 0; j < viewport.getColumnasViewport(); j++) {
+                String contenidoCelda = viewport.getCelda(i, j).getContenido();
                 contenidoCelda = contenidoCelda.length() > 5 ? contenidoCelda.substring(0, 5)
                         : String.format("%-5s", contenidoCelda);
                 System.out.print(" " + contenidoCelda + " |");
@@ -51,6 +49,12 @@ public class VisiCalcUI {
     }
 
     private void mostrarOpciones() {
+
+        int filaActual = viewport.getFilaCursorGlobal();
+        int columnaActual = viewport.getColumnaCursorGlobal();
+        char letraColumna = (char) ('A' + columnaActual);
+
+        System.out.println("Posición actual: " + letraColumna + (filaActual + 1));
         System.out.println("Utilice las teclas W, A, S y D para moverse.");
         System.out.println("Presione 'E' para ingresar texto en la celda actual.");
         System.out.println("Presione 'Q' para salir.");
@@ -59,16 +63,16 @@ public class VisiCalcUI {
     private boolean procesarComando(char comando) {
         switch (comando) {
             case 'W':
-                navegador.moverArriba();
+                viewport.moverCursor(-1, 0);
                 break;
             case 'A':
-                navegador.moverIzquierda();
+                viewport.moverCursor(0, -1);
                 break;
             case 'S':
-                navegador.moverAbajo();
+                viewport.moverCursor(1, 0);
                 break;
             case 'D':
-                navegador.moverDerecha();
+                viewport.moverCursor(0, 1);
                 break;
             case 'E':
                 editarCeldaActual();
@@ -82,7 +86,7 @@ public class VisiCalcUI {
     }
 
     private void editarCeldaActual() {
-        Celda celdaActual = navegador.getCeldaActual();
+        Celda celdaActual = viewport.getCeldaCursor();
         System.out.println("Ingrese el texto para la celda seleccionada:");
         String texto = scanner.next();
         celdaActual.setContenido(texto);
