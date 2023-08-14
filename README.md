@@ -1,6 +1,14 @@
 # Pequeñas anécdotas sobre las hojas de cálculo
 
-*[:notes:](https://open.spotify.com/playlist/6LMNfjSadC8b1L6jXomFqF?si=38004e0d5f3b4721)*
+<div align="center">
+
+|![](/imagenes/hojaDeCalculo.png)|
+|-|
+| |
+
+</div>
+
+
 
 |Versión|Detalle|
 |-|-|
@@ -9,3 +17,7 @@
 |[v02](/src/main/java/v02)|Librerias
 |[v03](/src/main/java/v03)|Versión basada en objetos
 |[v04](/src/main/java/v04)|El viewport
+
+---
+
+*[:notes:](https://open.spotify.com/playlist/6LMNfjSadC8b1L6jXomFqF?si=38004e0d5f3b4721)*

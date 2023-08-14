@@ -30,6 +30,7 @@ public class Visicalc {
             char comando = scanner.next().toUpperCase().charAt(0);
 
             estaOperativo = procesarComando(comando, hojaCalculo, posicion);
+            
            
         }
 
@@ -128,10 +129,10 @@ public class Visicalc {
 
     static void ingresarTextoEnCelda(String[][] hoja, int filaActual, int columnaActual) {
         Scanner scanner = new Scanner(System.in);
-        librerias.Consola.posicionarse(2, 0);
+        Consola.posicionarse(2, 0);
         System.out.print("Ingrese el texto para [" + (char) ('A' + columnaActual) + (filaActual + 1) + "]:");
         String texto = scanner.next();
         hoja[filaActual][columnaActual] = texto;
-        scanner.close();
+        // scanner.close();
     }
 }
