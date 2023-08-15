@@ -15,6 +15,14 @@ public class Navegador {
         return hoja.getCelda(filaActual, columnaActual);
     }
 
+    public int getFilaActual(){
+        return this.filaActual;
+    }
+
+    public int getColumaActual(){
+        return this.columnaActual;
+    }
+
     public void moverArriba() {
         if (filaActual > 0) {
             filaActual--;
