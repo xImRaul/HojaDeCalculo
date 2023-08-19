@@ -2,6 +2,8 @@ package v04;
 
 import java.util.Scanner;
 
+import librerias.Consola;
+
 public class VisiCalcUI {
     private Viewport viewport;
     private Scanner scanner;
@@ -27,6 +29,7 @@ public class VisiCalcUI {
     }
 
     private void mostrarHoja() {
+        Consola.limpiarPantalla();
         System.out.print("      ");
         for (int j = 0; j < viewport.getColumnasViewport(); j++) {
             char letraColumna = (char) ('A' + viewport.getColumnaInicio() + j);
@@ -38,10 +41,15 @@ public class VisiCalcUI {
             System.out.printf("%-5d|", viewport.getFilaInicio() + i + 1);
 
             for (int j = 0; j < viewport.getColumnasViewport(); j++) {
-                String contenidoCelda = viewport.getCelda(i, j).getContenido();
-                contenidoCelda = contenidoCelda.length() > 5 ? contenidoCelda.substring(0, 5)
-                        : String.format("%-5s", contenidoCelda);
-                System.out.print(" " + contenidoCelda + " |");
+                String celda = viewport.getCelda(i, j).getContenido();
+                celda = celda.length() > 5 ? celda.substring(0, 5) : String.format("%-5s", celda);
+                
+                if (i == viewport.getFilaCursorGlobal() - viewport.getFilaInicio() && j == viewport.getColumnaCursorGlobal() - viewport.getColumnaInicio()) {
+                    System.out.print("[" + celda + "]");
+                } else {
+                    System.out.print(" " + celda + " ");
+                }
+                System.out.print("|");
             }
 
             System.out.println();
