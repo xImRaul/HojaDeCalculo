@@ -51,7 +51,6 @@ public class VisiCalcUI {
                 }
                 System.out.print("|");
             }
-
             System.out.println();
         }
     }
