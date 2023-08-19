@@ -3,7 +3,7 @@ package v04;
 public class VisiCalc {
 
     private static final int FILAS = 30;
-    private static final int COLUMNAS = 20;
+    private static final int COLUMNAS = 27;
 
     public static void main(String[] args) {
 
