@@ -88,7 +88,7 @@ public class Visicalc {
         int filaActual = posicion[0];
         int columnaActual = posicion[1];
 
-        System.out.println("Desplazamiento: wasd | Modo edición: e | Salir: q");
+        System.out.println("DESPLAZAMIENTO: wasd | Edición: e | Salir: q");
         System.out.println("[" + (char) ('A' + columnaActual) + (filaActual + 1) + "] ");
     }
 

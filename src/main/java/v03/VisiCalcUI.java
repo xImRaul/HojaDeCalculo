@@ -19,8 +19,6 @@ public class VisiCalcUI {
 
         while (estaOperativo) {
             mostrarHoja();
-            mostrarOpciones();
-
             char comando = scanner.next().toUpperCase().charAt(0);
             estaOperativo = procesarComando(comando);
         }
@@ -31,6 +29,7 @@ public class VisiCalcUI {
 
     private void mostrarHoja() {
         Consola.limpiarPantalla();
+        mostrarOpciones(navegador);
         System.out.print("      ");
         for (int j = 0; j < hoja.getNumeroDeColumnas(); j++) {
             char letraColumna = (char) ('A' + j);
@@ -55,12 +54,13 @@ public class VisiCalcUI {
 
             System.out.println();
         }
+        Consola.posicionarse(2, 10);
     }
 
-    private void mostrarOpciones() {
-        System.out.println("Utilice las teclas W, A, S y D para moverse.");
-        System.out.println("Presione 'E' para ingresar texto en la celda actual.");
-        System.out.println("Presione 'Q' para salir.");
+    private void mostrarOpciones(Navegador navegador) {
+        System.out.print("[" + (char) ('A' + navegador.getColumaActual()) + (navegador.getFilaActual() + 1) + "] ");
+        System.out.println("OPCIONES: desplazarse: wasd | editar: e | salir: q");
+        System.out.println("COMANDO >");
     }
 
     private boolean procesarComando(char comando) {
@@ -90,7 +90,8 @@ public class VisiCalcUI {
 
     private void editarCeldaActual() {
         Celda celdaActual = navegador.getCeldaActual();
-        System.out.println("Ingrese el texto para la celda seleccionada:");
+        Consola.posicionarse(2, 1);
+        System.out.print ("Ingrese el texto:");
         String texto = scanner.next();
         celdaActual.setContenido(texto);
     }

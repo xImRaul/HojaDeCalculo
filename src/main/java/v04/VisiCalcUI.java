@@ -1,7 +1,6 @@
 package v04;
 
 import java.util.Scanner;
-
 import librerias.Consola;
 
 public class VisiCalcUI {
@@ -18,8 +17,6 @@ public class VisiCalcUI {
 
         while (estaOperativo) {
             mostrarHoja();
-            mostrarOpciones();
-
             char comando = scanner.next().toUpperCase().charAt(0);
             estaOperativo = procesarComando(comando);
         }
@@ -30,6 +27,7 @@ public class VisiCalcUI {
 
     private void mostrarHoja() {
         Consola.limpiarPantalla();
+        mostrarOpciones();
         System.out.print("      ");
         for (int j = 0; j < viewport.getColumnasViewport(); j++) {
             char letraColumna = (char) ('A' + viewport.getColumnaInicio() + j);
@@ -53,6 +51,7 @@ public class VisiCalcUI {
             }
             System.out.println();
         }
+        Consola.posicionarse(2, 10);
     }
 
     private void mostrarOpciones() {
@@ -61,10 +60,10 @@ public class VisiCalcUI {
         int columnaActual = viewport.getColumnaCursorGlobal();
         char letraColumna = (char) ('A' + columnaActual);
 
-        System.out.println("Posición actual: " + letraColumna + (filaActual + 1));
-        System.out.println("Utilice las teclas W, A, S y D para moverse.");
-        System.out.println("Presione 'E' para ingresar texto en la celda actual.");
-        System.out.println("Presione 'Q' para salir.");
+        System.out.print("[" + letraColumna + (filaActual + 1) + "] ");
+        System.out.println("OPCIONES: desplazarse: wasd | editar: e | salir: q");
+        System.out.println("COMANDO >");        
+
     }
 
     private boolean procesarComando(char comando) {
@@ -94,7 +93,8 @@ public class VisiCalcUI {
 
     private void editarCeldaActual() {
         Celda celdaActual = viewport.getCeldaCursor();
-        System.out.println("Ingrese el texto para la celda seleccionada:");
+        Consola.posicionarse(2, 1);
+        System.out.print ("Ingrese el texto:");
         String texto = scanner.next();
         celdaActual.setContenido(texto);
     }
