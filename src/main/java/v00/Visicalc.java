@@ -12,9 +12,9 @@ public class Visicalc {
 
         String[][] hojaCalculo = new String[FILAS][COLUMNAS];
 
-        for (int i = 0; i < FILAS; i++) {
-            for (int j = 0; j < COLUMNAS; j++) {
-                hojaCalculo[i][j] = "";
+        for (int fila = 0; fila < FILAS; fila++) {
+            for (int columna = 0; columna < COLUMNAS; columna++) {
+                hojaCalculo[fila][columna] = "";
             }
         }
 
@@ -26,26 +26,26 @@ public class Visicalc {
             int columnaActual = posicion[1];
 
             System.out.print("      ");
-            for (int j = 0; j < COLUMNAS; j++) {
-                char letraColumna = (char) ('A' + j);
+            for (int columna = 0; columna < COLUMNAS; columna++) {
+                char letraColumna = (char) ('A' + columna);
                 System.out.printf("%-8s", letraColumna);
             }
             System.out.println();
 
             System.out.print("     +");
-            for (int j = 0; j < COLUMNAS; j++) {
+            for (int columna = 0; columna < COLUMNAS; columna++) {
                 System.out.print("-------+");
             }
             System.out.println();
 
-            for (int i = 0; i < FILAS; i++) {
-                System.out.printf("%-5d|", i + 1);
+            for (int fila = 0; fila < FILAS; fila++) {
+                System.out.printf("%-5d|", fila + 1);
 
-                for (int j = 0; j < COLUMNAS; j++) {
-                    String celda = hojaCalculo[i][j];
+                for (int columna = 0; columna < COLUMNAS; columna++) {
+                    String celda = hojaCalculo[fila][columna];
                     celda = celda.length() > 5 ? celda.substring(0, 5) : String.format("%-5s", celda);
 
-                    if (i == filaActual && j == columnaActual) {
+                    if (fila == filaActual && columna == columnaActual) {
                         celda = "[" + celda + "]";
                     } else {
                         celda = " " + celda + " ";
@@ -57,7 +57,7 @@ public class Visicalc {
             }
 
             System.out.print("     +");
-            for (int j = 0; j < COLUMNAS; j++) {
+            for (int columna = 0; columna < COLUMNAS; columna++) {
                 System.out.print("-------+");
             }
             System.out.println();
@@ -93,12 +93,9 @@ public class Visicalc {
                 default:
                     System.out.println("Comando inválido. Intente nuevamente.");
             }
-
             posicion[0] = filaActual;
             posicion[1] = columnaActual;
-
         }
-
         scanner.close();
     }
 }

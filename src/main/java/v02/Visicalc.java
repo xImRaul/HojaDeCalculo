@@ -12,20 +12,14 @@ public class Visicalc {
         Scanner scanner = new Scanner(System.in);
 
         String[][] hojaCalculo = new String[FILAS][COLUMNAS];
-        inicializarHojaCalculo(hojaCalculo);
-
         int[] posicion = { 0, 0 };
         boolean estaOperativo = true;
 
-        while (estaOperativo) {
-            Consola.limpiarPantalla();
-            imprimirOpciones(posicion);
-            imprimirCabecerasColumnas();
-            imprimirRegla();
-            imprimirContenido(hojaCalculo, posicion);
-            imprimirRegla();
+        inicializarHojaCalculo(hojaCalculo);
 
-            Consola.posicionarse(2, 5);
+        while (estaOperativo) {
+
+            imprimirHojaCalculo(hojaCalculo, posicion);
 
             char comando = scanner.next().toUpperCase().charAt(0);
 
@@ -36,18 +30,29 @@ public class Visicalc {
         scanner.close();
     }
 
+    private static void imprimirHojaCalculo(String[][] hojaCalculo, int[] posicion) {
+
+        Consola.limpiarPantalla();
+        imprimirOpciones(posicion);
+        imprimirCabecerasColumnas();
+        imprimirRegla();
+        imprimirContenido(hojaCalculo, posicion);
+        imprimirRegla();
+        Consola.posicionarse(2, 5);
+    }
+
     static void inicializarHojaCalculo(String[][] hojaCalculo) {
-        for (int i = 0; i < FILAS; i++) {
-            for (int j = 0; j < COLUMNAS; j++) {
-                hojaCalculo[i][j] = "";
+        for (int fila = 0; fila < FILAS; fila++) {
+            for (int columna = 0; columna < COLUMNAS; columna++) {
+                hojaCalculo[fila][columna] = "";
             }
         }
     }
 
     static void imprimirCabecerasColumnas() {
         System.out.print("      ");
-        for (int j = 0; j < COLUMNAS; j++) {
-            char letraColumna = (char) ('A' + j);
+        for (int columna = 0; columna < COLUMNAS; columna++) {
+            char letraColumna = (char) ('A' + columna);
             System.out.printf("%-8s", letraColumna);
         }
         System.out.println();
@@ -55,7 +60,7 @@ public class Visicalc {
 
     static void imprimirRegla() {
         System.out.print("     +");
-        for (int j = 0; j < COLUMNAS; j++) {
+        for (int columna = 0; columna < COLUMNAS; columna++) {
             System.out.print("-------+");
         }
         System.out.println();
@@ -65,14 +70,14 @@ public class Visicalc {
         int filaActual = posicion[0];
         int columnaActual = posicion[1];
 
-        for (int i = 0; i < FILAS; i++) {
-            System.out.printf("%-5d|", i + 1);
+        for (int fila = 0; fila < FILAS; fila++) {
+            System.out.printf("%-5d|", fila + 1);
 
-            for (int j = 0; j < COLUMNAS; j++) {
-                String celda = hojaCalculo[i][j];
+            for (int columna = 0; columna < COLUMNAS; columna++) {
+                String celda = hojaCalculo[fila][columna];
                 celda = celda.length() > 5 ? celda.substring(0, 5) : String.format("%-5s", celda);
 
-                if (i == filaActual && j == columnaActual) {
+                if (fila == filaActual && columna == columnaActual) {
                     celda = "[" + celda + "]";
                 } else {
                     celda = " " + celda + " ";
